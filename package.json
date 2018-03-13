@@ -1,0 +1,22 @@
+{
+  "name": "tw--serviceWorker",
+  "version": "0.1.0",
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "dev": "supervisor ./src/server.js",
+    "start": "supervisor ./src/node.js"
+  },
+  "keywords": [
+    "service worker",
+    "tech watch"
+  ],
+  "author": "d.dieu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "supervisor": "^0.12.0"
+  }
+}
