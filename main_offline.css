@@ -1,0 +1,11 @@
+small {
+  color: green;
+}
+
+small.error {
+  color: red;
+}
+
+html, body {
+  background: #333333;
+}

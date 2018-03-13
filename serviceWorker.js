@@ -11,7 +11,8 @@ self.addEventListener('install', (event) => {
         '/tw_serviceWorker/offline.html',
         '/tw_serviceWorker/serviceWorker.js',
         '/tw_serviceWorker/main.js',
-        '/tw_serviceWorker/main.css'
+        '/tw_serviceWorker/main.css',
+        '/tw_serviceWorker/main_offline.css'
       ])
     })
   )
@@ -21,7 +22,8 @@ self.addEventListener('install', (event) => {
  * 
  */
 self.addEventListener('fetch', (event) => {
-  console.log('fetch ', event.request.url)
+  console.log('fetch ', event.request)
+  
   event.respondWith(caches.match(event.request).then((response) => {
     if (response !== undefined) {
       console.log(response)
