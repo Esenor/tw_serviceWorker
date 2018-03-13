@@ -29,7 +29,6 @@ self.addEventListener('fetch', (event) => {
       caches.match('/tw_serviceWorker/offline.html').then((response) => {
         return response
       })
-      /*
       return fetch(event.request).then((response) => {
         let responseCloned = response.clone()
         caches.open('customcache').then((cache) => {
@@ -37,7 +36,6 @@ self.addEventListener('fetch', (event) => {
         })
         return response
       })
-      */
     }
   }))
 })
