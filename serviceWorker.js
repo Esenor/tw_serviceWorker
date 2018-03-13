@@ -24,11 +24,9 @@ self.addEventListener('fetch', (event) => {
   console.log('fetch ', event.request.url)
   event.respondWith(caches.match(event.request).then((response) => {
     if (response !== undefined) {
+      console.log(response)
       return response
     } else {
-      caches.match('/tw_serviceWorker/offline.html').then((response) => {
-        return response
-      })
       return fetch(event.request).then((response) => {
         let responseCloned = response.clone()
         caches.open('customcache').then((cache) => {
