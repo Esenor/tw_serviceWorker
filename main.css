@@ -1,3 +1,7 @@
 small {
-  color: #333333;
+  color: green;
+}
+
+small.error {
+  color: red;
 }

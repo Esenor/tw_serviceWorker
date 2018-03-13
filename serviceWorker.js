@@ -4,7 +4,8 @@ self.addEventListener('install', (event) => {
     caches.open('v1').then((cache) => {
       return cache.addAll([
         '/tw_serviceWorker/',
-        '/tw_serviceWorker/index.html',
+        // '/tw_serviceWorker/index.html',
+        '/tw_serviceWorker/offline.html',
         '/tw_serviceWorker/serviceWorker.js',
         '/tw_serviceWorker/main.js',
         '/tw_serviceWorker/main.css'
@@ -25,6 +26,8 @@ self.addEventListener('fetch', (event) => {
           cache.put(event.request, responseCloned)
         })
         return response
+      }).catch(function () {
+        return caches.match('/tw_serviceWorker/offline.html')
       })
     }
   }))
