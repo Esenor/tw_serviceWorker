@@ -8,6 +8,7 @@ self.addEventListener('install', (event) => {
       return cache.addAll([
         '/tw_serviceWorker/',
         '/tw_serviceWorker/index.html',
+        '/tw_serviceWorker/offline.html',
         '/tw_serviceWorker/serviceWorker.js',
         '/tw_serviceWorker/main.js',
         '/tw_serviceWorker/main.css'
