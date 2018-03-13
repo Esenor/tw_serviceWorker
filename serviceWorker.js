@@ -4,7 +4,10 @@ self.addEventListener('install', (event) => {
     caches.open('v1').then((cache) => {
       return cache.addAll([
         '/tw_serviceWorker/',
-        '/tw_serviceWorker/index.html'
+        '/tw_serviceWorker/index.html',
+        '/tw_serviceWorker/serviceWorker.js',
+        '/tw_serviceWorker/main.js',
+        '/tw_serviceWorker/main.css'
       ])
     })
   )
