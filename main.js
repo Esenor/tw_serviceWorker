@@ -12,3 +12,10 @@ if (navigator.serviceWorker) {
 } else {
   console.log('ERROR: Service worker is not available with this navigator.')
 }
+
+window.addEventListener('online', (event) => {
+  console.log('online --> ', event)
+})
+window.addEventListener('offline', (event) => {
+  console.log('offline --> ', event)
+})
