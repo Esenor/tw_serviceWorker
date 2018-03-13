@@ -10,10 +10,19 @@ self.addEventListener('install', (event) => {
   )
 })
 
-self.addEventListener('activate', (event) => {
-  console.log('activate event ', event)
-})
-
 self.addEventListener('fetch', (event) => {
   console.log('fetch ', event.request.url)
+  event.respodWith(caches.match(event.request).then((response) => {
+    if (response !== undefined) {
+      return response
+    } else {
+      return fetch(event.request).then((response) => {
+        let responseCloned = response.clone()
+        caches.open('v1').then((cache) => {
+          cache.put(event.request, responseCloned)
+        })
+        return response
+      })
+    }
+  }))
 })
