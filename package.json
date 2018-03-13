@@ -1,5 +1,5 @@
 {
-  "name": "tw--serviceWorker",
+  "name": "tw_serviceWorker",
   "version": "0.1.0",
   "description": "",
   "main": "./src/server.js",
