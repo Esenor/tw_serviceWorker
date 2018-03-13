@@ -3,8 +3,8 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('v1').then((cache) => {
       return cache.addAll([
-        '/demo/',
-        '/demo/index.html'
+        '/tw_serviceWorker/',
+        '/tw_serviceWorker/index.html'
       ])
     })
   )

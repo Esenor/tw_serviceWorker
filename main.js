@@ -3,7 +3,7 @@ if (navigator.serviceWorker) {
   console.log('INFO: Service worker is available with this navigator.')
   // Register the serviceWorker
   navigator.serviceWorker.register('./serviceWorker.js', {
-    scope: '/demo/'
+    scope: '/tw_serviceWorker/'
   }).then((registration) => {
     console.log('registration ', registration)
   }).catch((error) => {
