@@ -23,6 +23,7 @@ self.addEventListener('install', (event) => {
  * 
  */
 self.addEventListener('fetch', (event) => {
+  let basePath = '/tw_serviceWorker'
   let slugUrl = event.request.url.replace(event.request.referrer, '')
   console.log('Fetch ', slugUrl, event.request)
   switch (slugUrl) {
@@ -30,7 +31,7 @@ self.addEventListener('fetch', (event) => {
       if (navigator.onLine) {
         return getCacheOrRemoteRessource(event)
       } else {
-        return event.respondWith(caches.match('/main_offline.css').then((response) => {
+        return event.respondWith(caches.match(basePath + '/main_offline.css').then((response) => {
           if (response !== undefined) {
             return response
           }
