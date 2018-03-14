@@ -2,17 +2,16 @@
  * 
  */
 self.addEventListener('install', (event) => {
-  console.log('install event ', event)
   event.waitUntil(
     caches.open('customcache').then((cache) => {
       return cache.addAll([
-        '/tw_serviceWorker/',
-        '/tw_serviceWorker/index.html',
-        '/tw_serviceWorker/offline.html',
-        '/tw_serviceWorker/serviceWorker.js',
-        '/tw_serviceWorker/main.js',
-        '/tw_serviceWorker/main.css',
-        '/tw_serviceWorker/main_offline.css'
+        '/',
+        '/index.html',
+        '/offline.html',
+        '/serviceWorker.js',
+        '/main.js',
+        '/main.css',
+        '/main_offline.css'
       ])
     })
   )
@@ -22,20 +21,42 @@ self.addEventListener('install', (event) => {
  * 
  */
 self.addEventListener('fetch', (event) => {
-  console.log('fetch -> ', event.request)
-  
+  console.log('Fetch ', event.request)
+  let slugUrl = event.request.url.replace(event.request.referrer, '')
+
+  switch (slugUrl) {
+    case 'main.css':
+      if (navigator.onLine) {
+        return getCacheOrRemoteRessource(event)
+      } else {
+        return event.respondWith(caches.match('/main_offline.css').then((response) => {
+          if (response !== undefined) {
+            return response
+          }
+        }))
+      }
+      break
+    default:
+      return getCacheOrRemoteRessource(event)
+      break
+  }
+
+})
+
+function getCacheOrRemoteRessource(event, cacheName = 'customCache') {
   return event.respondWith(caches.match(event.request).then((response) => {
     if (response !== undefined) {
-      console.log(response)
+      // Value in cache
       return response
     } else {
+      // Value not in cache
       return fetch(event.request).then((response) => {
         let responseCloned = response.clone()
-        caches.open('customcache').then((cache) => {
+        caches.open(cacheName).then((cache) => {
           cache.put(event.request, responseCloned)
         })
         return response
       })
     }
   }))
-})
+}

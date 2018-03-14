@@ -1,11 +1,32 @@
-small {
-  color: green;
+html,
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #CCCCCC;
+  background: #222222;
 }
 
-small.error {
+section {
+  margin: 150px;
+}
+
+div {
+  margin-top: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a::before {
+  content: '~';
+  margin-right: 5px;
+}
+
+
+#status::after {
+  content: 'OFFLINE';
   color: red;
-}
-
-html, body {
-  background: #333333;
+  font-weight: bold;
+  margin-left: 5px;
 }

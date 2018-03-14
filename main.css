@@ -1,7 +1,30 @@
-small {
-  color: green;
+html, body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #555555;
+  background: #FFFFFF;
 }
 
-small.error {
-  color: red;
+section {
+  margin: 150px;
+}
+
+div {
+  margin-top: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a::before {
+  content: '~';
+  margin-right: 5px;
+}
+
+#status::after {
+  content: 'ONLINE';
+  color: limegreen;
+  font-weight: bold;
+  margin-left: 5px;
 }
