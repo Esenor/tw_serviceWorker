@@ -24,9 +24,9 @@ self.addEventListener('install', (event) => {
  */
 self.addEventListener('fetch', (event) => {
   console.log('Fetch ', event.request)
+  let basePath = '/tw_serviceWorker'
   let slugUrl = event.request.url.replace(event.request.referrer, '')
-
-  switch (slugUrl) {
+  switch (basePath . slugUrl) {
     case 'main.css':
       if (navigator.onLine) {
         return getCacheOrRemoteRessource(event)
