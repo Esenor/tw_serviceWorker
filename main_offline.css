@@ -13,17 +13,6 @@ div {
   margin-top: 10px;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-a::before {
-  content: '~';
-  margin-right: 5px;
-}
-
-
 #status::after {
   content: 'OFFLINE';
   color: red;
