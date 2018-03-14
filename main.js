@@ -1,4 +1,3 @@
-window.alert(document.referrer)
 // Check if serviceWorker is available
 if (navigator.serviceWorker) {
   // Register the serviceWorker

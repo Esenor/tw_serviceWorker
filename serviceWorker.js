@@ -1,19 +1,19 @@
 const CACHE_NAME = 'customcache'
+const BASE_PATH = '/tw_serviceWorker'
 /**
  * 
  */
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      let basePath = '/tw_serviceWorker'
       return cache.addAll([
-        basePath + '/',
-        basePath + '/index.html',
-        basePath + '/offline.html',
-        basePath + '/serviceWorker.js',
-        basePath + '/main.js',
-        basePath + '/main.css',
-        basePath + '/main_offline.css'
+        BASE_PATH + '/',
+        BASE_PATH + '/index.html',
+        BASE_PATH + '/offline.html',
+        BASE_PATH + '/serviceWorker.js',
+        BASE_PATH + '/main.js',
+        BASE_PATH + '/main.css',
+        BASE_PATH + '/main_offline.css'
       ])
     })
   )
@@ -23,7 +23,6 @@ self.addEventListener('install', (event) => {
  * 
  */
 self.addEventListener('fetch', (event) => {
-  let basePath = '/tw_serviceWorker'
   let slugUrl = event.request.url.replace(event.request.referrer, '')
   console.log('Fetch ', slugUrl, event.request)
   switch (slugUrl) {
@@ -31,7 +30,7 @@ self.addEventListener('fetch', (event) => {
       if (navigator.onLine) {
         return getCacheOrRemoteRessource(event)
       } else {
-        return event.respondWith(caches.match(basePath + '/main_offline.css').then((response) => {
+        return event.respondWith(caches.match(BASE_PATH + '/main_offline.css').then((response) => {
           if (response !== undefined) {
             return response
           }
