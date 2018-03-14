@@ -2,7 +2,7 @@
 if (navigator.serviceWorker) {
   // Register the serviceWorker
   navigator.serviceWorker.register('./serviceWorker.js', {
-    scope: '/'
+    scope: '/tw_serviceWorker/'
   }).then((registration) => {
     //
   }).catch((error) => {

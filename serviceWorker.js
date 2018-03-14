@@ -1,17 +1,19 @@
+const CACHE_NAME = 'customcache'
 /**
  * 
  */
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open('customcache').then((cache) => {
+    caches.open(CACHE_NAME).then((cache) => {
+      let basePath = '/tw_serviceWorker'
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/offline.html',
-        '/serviceWorker.js',
-        '/main.js',
-        '/main.css',
-        '/main_offline.css'
+        basePath + '/',
+        basePath + '/index.html',
+        basePath + '/offline.html',
+        basePath + '/serviceWorker.js',
+        basePath + '/main.js',
+        basePath + '/main.css',
+        basePath + '/main_offline.css'
       ])
     })
   )
@@ -43,7 +45,7 @@ self.addEventListener('fetch', (event) => {
 
 })
 
-function getCacheOrRemoteRessource(event, cacheName = 'customCache') {
+function getCacheOrRemoteRessource(event, cacheName = CACHE_NAME) {
   return event.respondWith(caches.match(event.request).then((response) => {
     if (response !== undefined) {
       // Value in cache
