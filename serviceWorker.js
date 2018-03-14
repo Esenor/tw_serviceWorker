@@ -1,7 +1,8 @@
 const CACHE_NAME = 'customcache'
 const BASE_PATH = '/tw_serviceWorker'
+
 /**
- * 
+ * Install event
  */
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -20,12 +21,15 @@ self.addEventListener('install', (event) => {
 })
 
 /**
- * 
+ * Fetch event
  */
 self.addEventListener('fetch', (event) => {
   let slugUrl = event.request.url.replace(event.request.referrer, '')
   console.log('Fetch ', slugUrl, event.request)
   switch (slugUrl) {
+    /**
+     * main.css ressource
+     */
     case 'main.css':
       if (navigator.onLine) {
         return getCacheOrRemoteRessource(event)
@@ -44,6 +48,11 @@ self.addEventListener('fetch', (event) => {
 
 })
 
+/**
+ * Return cached or fetched ressource
+ * @param {object} event 
+ * @param {string} cacheName 
+ */
 function getCacheOrRemoteRessource(event, cacheName = CACHE_NAME) {
   return event.respondWith(caches.match(event.request).then((response) => {
     if (response !== undefined) {

@@ -13,6 +13,14 @@ div {
   margin-top: 10px;
 }
 
+button {
+  color: #555555;
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
 #status::after {
   content: 'OFFLINE';
   color: red;

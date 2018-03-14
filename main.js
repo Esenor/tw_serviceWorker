@@ -4,10 +4,11 @@ if (navigator.serviceWorker) {
   navigator.serviceWorker.register('./serviceWorker.js', {
     scope: '/tw_serviceWorker/'
   }).then((registration) => {
-    //
+    console.log(registration)
   }).catch((error) => {
-    console.log('error ', error)
+    console.error(error)
   })
 } else {
-  console.log('ERROR: Service worker is not available with this navigator.')
+  console.error('Service worker is not available with this navigator.')
+  window.alert('Service worker is not available with this navigator.')
 }
